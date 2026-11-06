@@ -1,0 +1,139 @@
+/* ---------- Colors (change these to re-theme the app) ---------- */
+:root {
+  --bg: #f6f1ea;
+  --surface: #fffdf9;
+  --ink: #2b2622;
+  --muted: #8a7f74;
+  --line: #e6ddd1;
+  --accent: #b4572f;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(180, 87, 47, 0.14);
+  --hover: rgba(0, 0, 0, 0.06);
+  --shadow: 0 8px 30px rgba(60, 40, 20, 0.08);
+}
+
+/* Dark mode: follows the device setting */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171412;
+    --surface: #211d1a;
+    --ink: #f1ebe3;
+    --muted: #9a8f84;
+    --line: #352f2a;
+    --accent: #e0875c;
+    --accent-ink: #1a120d;
+    --accent-soft: rgba(224, 135, 92, 0.18);
+    --hover: rgba(255, 255, 255, 0.08);
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ---------- Base ---------- */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.serif { font-family: Fraunces, Georgia, serif; }
+.muted { color: var(--muted); }
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Inputs ---------- */
+.field {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  outline: none;
+}
+.field:focus { border-color: var(--accent); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  padding: 0.7rem 1.2rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+  border-radius: 12px;
+  transition: transform 0.15s, opacity 0.2s;
+}
+.btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.ghost {
+  padding: 0.4rem 0.7rem;
+  color: var(--muted);
+  border-radius: 10px;
+}
+.ghost:hover { background: var(--hover); color: var(--ink); }
+
+/* ---------- Login / Signup tabs ---------- */
+.tabs {
+  display: flex;
+  padding: 4px;
+  margin-bottom: 1.5rem;
+  background: var(--hover);
+  border-radius: 12px;
+}
+.tab {
+  flex: 1;
+  padding: 0.55rem;
+  color: var(--muted);
+  font-weight: 600;
+  border-radius: 10px;
+}
+.tab.on { background: var(--bg); color: var(--ink); }
+
+/* ---------- Sidebar category buttons ---------- */
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+  color: var(--muted);
+  border-radius: 10px;
+}
+.chip:hover { background: var(--hover); }
+.chip.on { background: var(--accent-soft); color: var(--ink); font-weight: 600; }
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+}
+
+/* ---------- Note cards ---------- */
+.note { transition: transform 0.25s; }
+.note:hover { transform: translateY(-3px); }
+
+/* Show only the first 5 lines of a note */
+.clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+/* ---------- Animations ---------- */
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+@keyframes pop  { from { opacity: 0; transform: scale(0.95); } }
+@keyframes fade { from { opacity: 0; } }
+
+.rise { animation: rise 0.5s ease both; }
+.pop  { animation: pop 0.25s ease both; }
+.fade { animation: fade 0.2s ease both; }
